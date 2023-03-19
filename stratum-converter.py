@@ -420,7 +420,7 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                     state.coinbase_tx = (int(1).to_bytes(4, 'little') + \
                                     b'\x00\x01' + \
                                     b'\x01' + coinbase_txin + \
-                                    b'\x02' + \
+                                    b'\x03' + \
                                         coinbase_sats_int.to_bytes(8, 'little') + op_push(len(vout_to_miner)) + vout_to_miner + \
                                         coinbase_sats_com_aut_val_int.to_bytes(8, 'little') + op_push(len(vout_to_devfund)) + vout_to_devfund + \
                                         bytes(8) + op_push(len(witness_vout)) + witness_vout + \
@@ -428,7 +428,7 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
 
                     coinbase_no_wit = int(1).to_bytes(4, 'little') + \
                                         b'\x01' + coinbase_txin + \
-                                        b'\x02' + \
+                                        b'\x03' + \
                                             coinbase_sats_int.to_bytes(8, 'little') + op_push(len(vout_to_miner)) + vout_to_miner + \
                                             coinbase_sats_com_aut_val_int.to_bytes(8, 'little') + op_push(len(vout_to_devfund)) + vout_to_devfund + \
                                             bytes(8) + op_push(len(witness_vout)) + witness_vout + \
