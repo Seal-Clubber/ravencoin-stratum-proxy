@@ -165,7 +165,7 @@ class StratumSession(RPCSession):
         # The first address that connects is the one that is used
         address = username.split('.')[0]
         addr_decoded = base58.b58decode_check(address)
-        if addr_decoded[0] != (109 if self._testnet else 50):
+        if addr_decoded[0] != (42 if self._testnet else 38):
             raise RPCError(20, f'Invalid address {address}')
         if not self._state.pub_h160:
             self._state.pub_h160 = addr_decoded[1:]
@@ -320,7 +320,7 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                 prev_hash_hex: str = json_obj['result']['previousblockhash']
                 txs_list: List = json_obj['result']['transactions']
                 coinbase_sats_int: int = json_obj['result']['coinbasevalue'] 
-                coinbase_com_aut_address: str = json_obj['result']['CommunityAutonomousAddress'] #MPyNGZSSZ4rbjkVJRLn3v64pMcktpEYJnU
+                coinbase_com_aut_address: str = json_obj['result']['CommunityAutonomousAddress']
                 coinbase_sats_com_aut_val_int: int = json_obj['result']['CommunityAutonomousValue']
                 witness_hex: str = json_obj['result']['default_witness_commitment']
                 coinbase_flags_hex: str = json_obj['result']['coinbaseaux']['flags']
