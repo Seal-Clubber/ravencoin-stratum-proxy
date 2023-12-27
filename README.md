@@ -1,10 +1,10 @@
-# ravencoin-stratum-proxy
+# AIPGcoin-stratum-proxy
 Allows you to mine directly to your own local wallet/node with any mining software that uses the stratum protocol.
 
 If you are a windows user and are not familiar with python, a walk-through and auto installer is avaliable for a (hopefully) easy install. See [here](#windows).
 
 ## *Important Note*
-This is BETA software mainly tested on test-net, but has been confirmed to work on mainnet. (First known coinbase thanks to @pdath: https://rvn.cryptoscope.io/api/getrawtransaction/?txid=abf95dd29ac6732b5ff068bbc1063ef734268a2f04459f3be8ce2f5ea2d1e529&decode=1 can check by putting the vin0 coinbase into a hex->ascii converter).
+This is BETA software mainly tested on test-net, but has been confirmed to work on mainnet. (First known coinbase thanks to @pdath: https://AIPG.cryptoscope.io/api/getrawtransaction/?txid=abf95dd29ac6732b5ff068bbc1063ef734268a2f04459f3be8ce2f5ea2d1e529&decode=1 can check by putting the vin0 coinbase into a hex->ascii converter).
 
 ## *Important Note 2*
 This is not pool software and is meant for solo-mining. All proceeds go to the address of the first miner that connects.
@@ -32,7 +32,7 @@ Mining software will only send a share when it has found a block. No shares for 
 A bat file is avaliable to auto install python and dependencies and generate another bat file to run the stratum.
 1. Ensure your node is configured [as required](#node).
 2. (Re)start your node (the qt wallet works).
-3. Download this repo (https://github.com/kralverde/ravencoin-stratum-proxy/archive/refs/heads/master.zip)
+3. Download this repo (https://github.com/kralverde/AIPGcoin-stratum-proxy/archive/refs/heads/master.zip)
 4. Unzip the downloaded file
 5. Open the unzipped folder
 6. Open the `windows` folder
@@ -44,18 +44,18 @@ A bat file is avaliable to auto install python and dependencies and generate ano
 
 ## Node Requirements:
 
-Requires the following `raven.conf` options:
+Requires the following `AIPG.conf` options:
 ```
 server=1
 rpcuser=my_username
 rpcpassword=my_password
 rpcallowip=127.0.0.1
 ```
-On *nix OS's this file is located at `~/.raven` by default. On windows, this file is located at `%appdata%\roaming\Raven`.
+On *nix OS's this file is located at `~/.AIPG` by default. On windows, this file is located at `%appdata%\roaming\AIPG`.
 
-You may need to create the `raven.conf` file and add those lines if it does not exist.
+You may need to create the `AIPG.conf` file and add those lines if it does not exist.
 
-For testnet you can add `testnet=1` to your `raven.conf`
+For testnet you can add `testnet=1` to your `AIPG.conf`
 
 note:
 - Default Mainnet rpcport = `8766`
@@ -90,7 +90,7 @@ Connect to it with your miner of choise:
 <a name="help"/>
 
 ## Help:
-@kralverde#0550 is avaliable on the community ravencoin server (https://discord.gg/jn6uhur)
+@kralverde#0550 is avaliable on the community AIPGcoin server (https://discord.gg/jn6uhur)
 Donate: 
-  - RVN: RMriWfETGV97hskqH8TvSWVZb9idK6fkU6
+  - AIPG: RMriWfETGV97hskqH8TvSWVZb9idK6fkU6
   - BTC: bc1q9vs8ttd6sg8dvhwwqh5g6c5wjm0fwkfmq2lgff
