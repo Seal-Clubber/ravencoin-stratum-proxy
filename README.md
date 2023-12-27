@@ -26,40 +26,21 @@ Mining software will only send a share when it has found a block. No shares for 
 2. Run `python3 -m pip install -r requirements.txt`
   - Note that the pysha3 module will need to be compiled so you need some kind of C compiler installed. Alternatively, a precompiled `.whl` is avaliable in `windows/python_modules`.
 
-<a name="windows"/>
-
-#### For Windows:
-A bat file is avaliable to auto install python and dependencies and generate another bat file to run the stratum.
-1. Ensure your node is configured [as required](#node).
-2. (Re)start your node (the qt wallet works).
-3. Download this repo (https://github.com/kralverde/AIPG-stratum-proxy/archive/refs/heads/master.zip)
-4. Unzip the downloaded file
-5. Open the unzipped folder
-6. Open the `windows` folder
-7. Double-click `generate_bat.bat`
-8. After `generate_bat.bat` completes with no errors, go back to the previous folder.
-9. Double-click `run.bat` to run the stratum converter.
-
-<a name="node"/>
-
 ## Node Requirements:
 
-Requires the following `AIPG.conf` options:
+Requires the following `aipg.conf` options:
 ```
 server=1
 rpcuser=my_username
 rpcpassword=my_password
 rpcallowip=127.0.0.1
 ```
-On *nix OS's this file is located at `~/.AIPG` by default. On windows, this file is located at `%appdata%\roaming\AIPG`.
+On *nix OS's this file is located at `~/.aipg` by default. On windows, this file is located at `%appdata%\roaming\AIPG`.
 
-You may need to create the `AIPG.conf` file and add those lines if it does not exist.
+You may need to create the `aipg.conf` file and add those lines if it does not exist.
 
-For testnet you can add `testnet=1` to your `AIPG.conf`
+For testnet you can add `testnet=1` to your `aipg.conf`
 
-note:
-- Default Mainnet rpcport = `8766`
-- Default Testnet rpcport = `18766`
 
 Make sure you configure the rpcport on `stratum-converter.py` accordingly.
 
