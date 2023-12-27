@@ -84,7 +84,7 @@ Connect to it with your miner of choise:
 <a name="help"/>
 
 ## Help:
-@sealcubber is avaliable on the community AIPG server (https://discord.gg/vZ9XrTSRYr)
+@sealclubber is avaliable on the community AIPG server (https://discord.gg/vZ9XrTSRYr)
 Donate: 
   - AIPG: Ab8Wn5u6pc29ZhQkk1ocacFn3Hs6mdAioN
 
