@@ -1,4 +1,4 @@
-# AIPGcoin-stratum-proxy
+# AIPG-stratum-proxy
 Allows you to mine directly to your own local wallet/node with any mining software that uses the stratum protocol.
 
 If you are a windows user and are not familiar with python, a walk-through and auto installer is avaliable for a (hopefully) easy install. See [here](#windows).
@@ -32,7 +32,7 @@ Mining software will only send a share when it has found a block. No shares for 
 A bat file is avaliable to auto install python and dependencies and generate another bat file to run the stratum.
 1. Ensure your node is configured [as required](#node).
 2. (Re)start your node (the qt wallet works).
-3. Download this repo (https://github.com/kralverde/AIPGcoin-stratum-proxy/archive/refs/heads/master.zip)
+3. Download this repo (https://github.com/kralverde/AIPG-stratum-proxy/archive/refs/heads/master.zip)
 4. Unzip the downloaded file
 5. Open the unzipped folder
 6. Open the `windows` folder
@@ -90,7 +90,7 @@ Connect to it with your miner of choise:
 <a name="help"/>
 
 ## Help:
-@kralverde#0550 is avaliable on the community AIPGcoin server (https://discord.gg/jn6uhur)
+@kralverde#0550 is avaliable on the community AIPG server (https://discord.gg/jn6uhur)
 Donate: 
   - AIPG: RMriWfETGV97hskqH8TvSWVZb9idK6fkU6
   - BTC: bc1q9vs8ttd6sg8dvhwwqh5g6c5wjm0fwkfmq2lgff
