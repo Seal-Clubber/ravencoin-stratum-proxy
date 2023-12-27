@@ -1,9 +1,9 @@
 @echo off
 
 set "CURRENT_DIRECTORY=%~dp0"
-if NOT "%CURRENT_DIRECTORY:~-33%" == "\ravencoin-stratum-proxy\windows\" (
-    if NOT "%CURRENT_DIRECTORY:~-40%" == "\ravencoin-stratum-proxy-master\windows\" (
-        echo Error: Please run this batch file as-is from its original location in the ravencoin-stratum-proxy folder
+if NOT "%CURRENT_DIRECTORY:~-28%" == "\aipg-stratum-proxy\windows\" (
+    if NOT "%CURRENT_DIRECTORY:~-35%" == "\aipg-stratum-proxy-master\windows\" (
+        echo Error: Please run this batch file as-is from its original location in the aipg-stratum-proxy folder
 	pause
         exit /B
     )
@@ -88,13 +88,13 @@ if "%IS_MAINNET_INPUT%" == "" (
 
 if "%IS_MAINNET_INPUT%" == "mainnet" (
     set "IS_MAINNET=y"
-    set "DEFAULT_PORT=8766"
+    set "DEFAULT_PORT=9788"
     goto POST_CHECK_MAINNET
 )
 
 if "%IS_MAINNET_INPUT%" == "testnet" (
     set "IS_MAINNET="
-    set "DEFAULT_PORT=18766"
+    set "DEFAULT_PORT=19788"
     goto POST_CHECK_MAINNET
 )
 

@@ -165,7 +165,7 @@ class StratumSession(RPCSession):
         # The first address that connects is the one that is used
         address = username.split('.')[0]
         addr_decoded = base58.b58decode_check(address)
-        if addr_decoded[0] != (111 if self._testnet else 60):
+        if addr_decoded[0] != (23 if self._testnet else 23):
             raise RPCError(20, f'Invalid address {address}')
         if not self._state.pub_h160:
             self._state.pub_h160 = addr_decoded[1:]
@@ -320,6 +320,8 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                 prev_hash_hex: str = json_obj['result']['previousblockhash']
                 txs_list: List = json_obj['result']['transactions']
                 coinbase_sats_int: int = json_obj['result']['coinbasevalue'] 
+                coinbase_com_aut_address: str = json_obj['result']['CommunityAutonomousAddress'] #Ab8KBCTTJgy7XnsPsHbnwRMJD4MFjG12hU
+                coinbase_sats_com_aut_val_int: int = json_obj['result']['CommunityAutonomousValue']
                 witness_hex: str = json_obj['result']['default_witness_commitment']
                 coinbase_flags_hex: str = json_obj['result']['coinbaseaux']['flags']
                 target_hex: str = json_obj['result']['target']
@@ -404,6 +406,7 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                     coinbase_script = op_push(len(bip34_height)) + bip34_height + op_push(len(arbitrary_data)) + arbitrary_data
                     coinbase_txin = bytes(32) + b'\xff'*4 + var_int(len(coinbase_script)) + coinbase_script + b'\xff'*4
                     vout_to_miner = b'\x76\xa9\x14' + state.pub_h160 + b'\x88\xac'
+                    vout_to_devfund = b'\x76\xa9\x14' + base58.b58decode_check(coinbase_com_aut_address)[1:] + b'\x88\xac'
 
                     # Concerning the default_witness_commitment:
                     # https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#commitment-structure
@@ -417,15 +420,17 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                     state.coinbase_tx = (int(1).to_bytes(4, 'little') + \
                                     b'\x00\x01' + \
                                     b'\x01' + coinbase_txin + \
-                                    b'\x02' + \
+                                    b'\x03' + \
                                         coinbase_sats_int.to_bytes(8, 'little') + op_push(len(vout_to_miner)) + vout_to_miner + \
+                                        coinbase_sats_com_aut_val_int.to_bytes(8, 'little') + op_push(len(vout_to_devfund)) + vout_to_devfund + \
                                         bytes(8) + op_push(len(witness_vout)) + witness_vout + \
                                     b'\x01\x20' + bytes(32) + bytes(4))
 
                     coinbase_no_wit = int(1).to_bytes(4, 'little') + \
                                         b'\x01' + coinbase_txin + \
-                                        b'\x02' + \
+                                        b'\x03' + \
                                             coinbase_sats_int.to_bytes(8, 'little') + op_push(len(vout_to_miner)) + vout_to_miner + \
+                                            coinbase_sats_com_aut_val_int.to_bytes(8, 'little') + op_push(len(vout_to_devfund)) + vout_to_devfund + \
                                             bytes(8) + op_push(len(witness_vout)) + witness_vout + \
                                         bytes(4)
                     state.coinbase_txid = dsha256(coinbase_no_wit)
